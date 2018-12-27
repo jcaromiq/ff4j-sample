@@ -1,0 +1,19 @@
+version: "3.6"
+services:
+  ff4j-console:
+    container_name: ff4j-console
+    image: openjdk:8-jre-alpine
+    entrypoint: ["/usr/bin/java", "-jar", "/app.jar"]
+    volumes:
+    - "./ffconsole/build/libs/ffconsole.jar:/app.jar"
+    ports:
+    - "9090:8080"
+
+  web:
+    container_name: web
+    image: openjdk:8-jre-alpine
+    entrypoint: ["/usr/bin/java", "-jar", "/app.jar"]
+    volumes:
+    - "./my-awesome-web/build/libs/app.jar:/app.jar"
+    ports:
+    - "8080:8080"
