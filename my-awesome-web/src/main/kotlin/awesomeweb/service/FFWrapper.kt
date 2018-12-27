@@ -24,6 +24,7 @@ class FFWrapper @Autowired constructor(private val ff4j: FF4j) {
 
     fun <T> operateWith(featureId: String, nonExistsMapper: () -> T, existsMapper: () -> T): T =
             getFeature(featureId)
+                    .filter{it.isEnable}
                     .map { existsMapper() }
                     .orElse(nonExistsMapper())
 
