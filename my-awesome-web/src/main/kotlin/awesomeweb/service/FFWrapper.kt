@@ -21,4 +21,9 @@ class FFWrapper @Autowired constructor(private val ff4j: FF4j) {
             } catch (nf: FeatureNotFoundException) {
                 Optional.empty()
             }
+
+    fun <T> operateWith(featureId: String, nonExistsMapper: () -> T, existsMapper: () -> T): T =
+            getFeature(featureId)
+                    .map { existsMapper() }
+                    .orElse(nonExistsMapper())
 }

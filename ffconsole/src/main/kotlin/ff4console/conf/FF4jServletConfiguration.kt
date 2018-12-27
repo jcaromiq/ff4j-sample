@@ -13,8 +13,7 @@ import org.springframework.context.annotation.Configuration
 class FF4jServletConfiguration : SpringBootServletInitializer() {
 
     @Bean
-    fun getFF4j(): FF4j =
-            FF4j()
+    fun getFF4j(): FF4j = FF4j()
 
     @Bean
     fun getFF4JServlet(): FF4jDispatcherServlet =
